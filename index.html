@@ -1,24 +1,18 @@
-This project showcases several non-photorealistic rendering techniques meant to imitate various artistic and technical styles. Cel-shading, the Gooch method of technical shading, edge drawing and procedural and texture-based hatching are all shown. Cel shading is typically used to represent a cartoony style and is done by clamping values on shading into a small range. Gooch shading is used in technical illustration to make it easier to see back parts of objects that would ordinarly be shaded very darkly. It uses interpolation between a warm and cool value rather than dark and light. Both, but particularly Gooch shading are used in conjunction with silhouette/edge drawing. Hatching imitates drawing techniques to show light and shadow through overlapping lines.
+<!doctype html>
 
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
-<p>All shading techniques were carried out in the fragment shader, apart from edge drawing which was done with a two-pass technique and partially carried out in the main loop and vertex shader as well. All the listed shading techniques are implemented, though texture-based hatching could use some work. There is also implementation for the user to change all the colors used in the simulation as well as to move the lights and move around the scene.</p>
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
 
-<p><b> Artifacts: </b></p>
-<p>
-<img src="https://lh3.googleusercontent.com/K4rfJvf3pZrmFPExfTyLf780e4D9ujGsOAChzxAS8BzA1W4B4Fkqr2zzkATrz9EcAUwM-w6yxKRX6q07LOpyoiEXmL1rlpE91-vdFOVSRxfQ1kAoVcoHi4AemVHRgGd9QP92rhAYyus" width="400">
-<img src="https://lh3.googleusercontent.com/KHDuL2at60sE4p2PYE6wZGj90QyX7zVFve43i3PflJknJZjZ4HY05627iNL7beeA0rDCrgBH4S7f30w08iJLbJY0hEL3KlcWqQzMYNBWqXpdxasHFL3fvGjdw6CYs7bpz-KeGRURh0E" width="400">
-<img src="https://lh6.googleusercontent.com/nSbnwSpU3e5cxwQt__3O8lXcq_-uBRqF4izSVbNkQYsvjqvj3tvnXlCeMeXtG1vYZU0yVHCsOLI9AP1OhVSE5tfqRVzTOTdC6jhSxnEoyK8xviXQb6G6X6AMpoo3VN7xaf49F2ksAo8" width="400">
-<img src="https://lh4.googleusercontent.com/3rMsQNgZo9BbYvfwK78nQjNtn05j_lyy896-184AqcQl2U4v41mYGmoPdpXxfqHNntMTN59_GtOJSBLk-ZVJqVSZ3VCOpSmTk-WNNqdk3dZBR7paFK-kRts0P9Fxzr8dQNZ8GUZ7tqo" width="400">
-  <img src="https://lh5.googleusercontent.com/R7TTA_sSttEFe2G3W8tKyL-NKu3BZx1oS8K3nIn7QfhmjqTLVAktpF3sbnR-TAf456qb9H0q28RW-uVwZ73k5Pte8Ha2pN8OZn3rOtmmKw56I8Ouf_nhc63WViItWcUDUWTOVS8WaaU" width="400">
-  <img src="https://lh4.googleusercontent.com/WGTopx8ZMWT3ArgE0XZ8N1Y6_B2d9V0Nb-BeiGseNzHsutn3C1Kg1EMYBob-46U2LPAPGukselOh0vGyIrFlsLh_Al-mww9w4PmIOvM-zwkxLpTdgdSCh-xu1OaWszv_GP2KjcOD2Tg" width="400">
-  <img src="https://lh4.googleusercontent.com/wuHVMtox2eQi6h0bVJ4NxqePB-kFEtlW80M_Iq0rXVza1JCmU3w2dVcFh3hoEcQ2gnU6dhA1vHbcSkq-iA9tAWP4M-WWXzz8lMtsTG1bhRCGrGnSQP-dGlaff96m5nh20h-6D5_6ux8"width="400">
-   <img src="https://lh6.googleusercontent.com/AZUIpPO_NuIP2oyZl5GQ_AP_g920pLZ-do7EoJsOH4-KRMeo01kKLNJz_pNb1gS4BhHhVP3giqRW4KR5O3BidCkz2bN7sp325LfEG9d4U1exVdTp2vrfZm7rkiDxaRZV-1wdhGrLvz4"width="400">
-   <img src="https://lh4.googleusercontent.com/WIx4Zc8EavsbNTgjS89xe7LXUim5em8BkmpGfnTP37y28CwRBKH5x3WEuc8uDHNZ6R2y2J0jJNZeNQ_U-zGOa46sdW78s5HL4b_wX6QB7QBNiqCeGMRyBuY_7idHXAw9ejVR6RdB9QM"width="400">
-</p>
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
 
-<p><b>Sources:</b></p>
-<p>https://www.cs.utah.edu/~shirley/papers/gooch98.pdf</p>
-<p>http://cgstarad.com/Docs/GSContours.pdf</p>
-<p>http://hhoppe.com/hatching.pdf</p>
-<p>http://www.lighthouse3d.com/tutorials/glsl-12-tutorial/toon-shader-version-ii/</p>
-<p>http://sunandblackcat.com/tipFullView.php?l=eng&topicid=15</p>
+</head>
+
+<body>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
