@@ -1,3 +1,25 @@
+Assignment 1 Writeup
+Sarah Robertson
+
 <a href="/files/Assignment1_x64.zip" download="Assignment1_x64">
   Download game here.
 </a>
+
+Functioning GIF:
+<img src="https://i.imgur.com/yWNpL32.gif">
+
+Log Screenshot:
+<img src="https://cdn.discordapp.com/attachments/469161782137585665/882747443966529566/unknown.png">
+
+For this assignment, I was setting up a static library and a project in Visual Studio with a custom shader. This gave me an understanding of how future assignments will be set up in this class, which is helpful as I do have problems with the minutiae of Visual Studio sometimes. I had to make a static Graphics library that allowed usage of both Direct3D and OpenGL, and set those up to only work with the specific platforms they’re used for, and then add references to Graphics in other static libraries where it was needed. With that, I was able to set up a new project and make a fragment shader for it that rotated between several different colors on a loop.
+
+Beyond the base requirements of the assignment, I added the ability to speed up or reverse the simulation time on key press by using the SetSimulationRate method. I also tried to do something more complex with shaders in terms of making the colors totally randomized, but it seems that there’s not a really simple, solid way to make a purely random number function in a shader, and it wasn’t really worth my trouble without that to try and get the colors to not follow the exact same cycle every time when I could still get them to cycle based on simulation time, just in the same pattern.
+
+I generally ran into some trouble due to having an unfortunate habit of setting properties for only one platform and not the other (not changing the settings at the top). Luckily, I think this assignment has broken me of that habit. Other than that, things went pretty smoothly.
+
+The projects Application and ShaderBuilder both reference the Graphics project. I actually suspect ShaderBuilder didn’t need it, as it only uses enums from Graphics, but I did reference it just to be safe. If this turns out to be the case, I’ll remove it in the future.
+
+I liked how the code base was organized, as I found it very clean to keep all of the different systems separate, which is something I don’t usually do with my own projects (unfortunately). The only issue I ran into was when I was trying to make the color-changing on my triangle speed up on a button click and thought I needed to access the Graphics class for that, which the main game does not have a reference to. In this way, my messy organization can make things easier, but I think this is a much better way to do it (and I figured it out in the end anyway).
+I was a bit confused by the use of namespaces in the various files, because it was set up differently than I usually use namespaces. The lack of an actual name next to “namespace” wasn’t something I was familiar with. As far as I can tell, a namespace without a name is the equivalent of making a static member, at least from what Google said when I searched around. I also got a bit confused with the inconsistency between writing, for example, eae6320::Graphics vs Graphics only. 
+
+My expectations of the class so far are that I’ll get a deeper understanding of how game engines work behind the scenes. What I hope to get out of it is basically that, because I do tend to struggle more with things like memory management and pointer math, which has caused me issues on interviews and so on. To be honest, when we built the start of an engine in our previous programming class, mine was kind of held together with duct tape, so I hope that after this class I’ll have something that’s more flexible and actually working fully. My interests are actually more on the gameplay side, but I am very interested in graphics-- I know that it was said in class that we aren’t doing that much with it, but any exposure to OpenGL is helpful as I haven’t used it for several years and forgot a lot about it. 
