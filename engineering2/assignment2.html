@@ -1,0 +1,47 @@
+<b>Assignment 2 Writeup</b>
+<p>Sarah Robertson
+<p>
+<a href="/files/Assignment2_x64.zip" download="Assignment2_x64">
+  Download game here.
+</a>
+<p>
+Running with rectangle rendering:
+<img src="https://media.discordapp.net/attachments/469161782137585665/884953261306703902/unknown.png">
+<p>
+<b>Direct3D Captures:</b>
+<p>ClearRenderTargetView():
+<img src="https://media.discordapp.net/attachments/469161782137585665/884949715194617906/unknown.png?width=1010&height=367">
+<p>
+<p>Draw():
+<img src="https://media.discordapp.net/attachments/469161782137585665/884949890311008266/unknown.png?width=697&height=595">
+<p>
+<b>OpenGL Captures:</b>
+<p>glClear():
+<img src="https://media.discordapp.net/attachments/469161782137585665/884951891908362290/unknown.png?width=1010&height=504">
+<p>
+<p>glDrawArrays():
+<img src="https://media.discordapp.net/attachments/469161782137585665/884952021290057728/unknown.png?width=1010&height=502">
+<img src="https://media.discordapp.net/attachments/469161782137585665/884952203771645962/unknown.png?width=1010&height=507">
+<p><b>Code Snippets:</b>
+
+	// Bind the shading data
+	{
+		s_Effect.BindData();
+	}
+	// Draw the geometry
+	{
+		s_Mesh.DrawGeometry();
+	}
+
+<p>
+This code is identical in both the OpenGL and Direct3D versions of Graphics.cpp.
+<p>
+For this assignment, I moved code from our existing Graphics.d3d.cpp and Graphics.gl.cpp into two new classes that each had their own platform-independent versions, so that the two Graphics files could get closer to being identical rather than needing two separate versions. The purpose, worded better, is so that eventually there can just be one Graphics.cpp file and all the platform-independent code will be moved into its own classes to be run out of the view of the user. The two classes I made were a mesh class and an effects class-- the former contains vertex data, which is used to draw triangles on the screen, and the latter contains both the vertex and fragment shader that are used to render the triangles. With a separate effects class, a variety of different types of effects could conceivably be made and used much easier. 
+<p>
+One of the primary reasons the mesh class needs to be platform-independent is because OpenGL and Direct3D have different ways of doing coordinate systems-- Direct3D is left handed, which means you can use your left hand to figure out where the forward Z direction is and coordinates are entered clockwise, and OpenGL is right handed, which means the opposite. Because of this, coordinates for triangles are entered in different orders in the two mesh files. 
+<p>
+My effects class is set up slightly differently from my mesh class, which doesn’t have a general cMesh.cpp file. For this one, there are three different files, as some of the code was repeated between platforms. To make this work, I created an Initialize_platformSpecific and CleanUp_platformSpecific method that are called from cEffect.cpp’s general Initialize and CleanUp methods and run whatever platform specific code is needed for those methods. For the Direct3D version, there isn’t actually that much there, I believe because a lot of the stuff that the OpenGL version does extra in these methods is in Direct3D’s InitializeViewport method, which is still in Graphics.d3d.cpp.
+<p>
+The main thing I had trouble with on this assignment was determining the best way to construct the effects and mesh objects to be used in Graphics.cpp. I’m still not 100% sure I have it running in the best way-- currently I make a static version of each and operate on that, which does work but probably wouldn’t be the best if multiple meshes needed to be made, for example. I could conceivably use the “new” keyword to make pointer versions of my objects with my current implementation, but because all the vertex and shader data is hardcoded into the respective cMesh and cEffect.cpp files, I think it would be difficult to create unique versions of them from my current implementation. My guess is the best way to do this would be to pass this specific data into the constructor for each, but I’m not 100% sure about that and it’s something I’ll probably ask about. My program currently works as is, though, so it’s something I can fix later.
+<p>
+Generally, I believe one of the remaining differences between the two versions of Graphics.cpp is the sections of RenderFrame that clear the buffers for new geometry to be drawn. They have identical remaining variables, so presumably this stuff could just be moved into another method or class that does that specifically per platform. The other major difference is that the Direct3D version still has a InitializeViewports method that is unique to it-- maybe we could make a viewport class that manages all the creating/clearing of buffers, and move all of this stuff into it. For OpenGL, it would just have an empty initialize method, because that doesn’t have it’s own method for that platform. 
